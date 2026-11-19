@@ -1,0 +1,272 @@
+{
+ "_comment": "CUSTOMER_EQUIPMENT fields the offline file downloads (EquipmentSync layout minus local-only sync fields), with field ids in each file. offline = GasketsRockOffline_Sandbox DDR 2026-10-09; server = CustomersEquipment in GSR_Gaskets Rock_Sandbox DDR 2026-10-05.",
+ "offlineTable": {
+  "id": 1065093,
+  "name": "CUSTOMER_EQUIPMENT"
+ },
+ "serverTable": {
+  "name": "customers_locations__CUSTOMERS_EQUIPMENT"
+ },
+ "fields": [
+  {
+   "name": "_ID_EquipmentZone",
+   "offline": 66,
+   "server": 66
+  },
+  {
+   "name": "_ID_Manufacturer",
+   "offline": 10,
+   "server": 10
+  },
+  {
+   "name": "_ID_Model",
+   "offline": 73,
+   "server": 73
+  },
+  {
+   "name": "_ID_Part_SpecialOrder",
+   "offline": 62,
+   "server": 62
+  },
+  {
+   "name": "_ID_Product",
+   "offline": 64,
+   "server": 64
+  },
+  {
+   "name": "Color",
+   "offline": 8,
+   "server": 8
+  },
+  {
+   "name": "Customer",
+   "offline": 45,
+   "server": 45
+  },
+  {
+   "name": "CustomerName",
+   "offline": 26,
+   "server": 26
+  },
+  {
+   "name": "CustomItem",
+   "offline": 46,
+   "server": 46
+  },
+  {
+   "name": "Door",
+   "offline": 51,
+   "server": 51
+  },
+  {
+   "name": "DoorOption",
+   "offline": 54,
+   "server": 54
+  },
+  {
+   "name": "Equipment_Location_Description",
+   "offline": 11,
+   "server": 11
+  },
+  {
+   "name": "Gasket_Profile",
+   "offline": 14,
+   "server": 14
+  },
+  {
+   "name": "heightEntry",
+   "offline": 68,
+   "server": 68
+  },
+  {
+   "name": "Imported_by_Ray_Apr22",
+   "offline": 24,
+   "server": 24
+  },
+  {
+   "name": "InvertedProfile",
+   "offline": 50,
+   "server": 50
+  },
+  {
+   "name": "Item_Note",
+   "offline": 19,
+   "server": 19
+  },
+  {
+   "name": "Location",
+   "offline": 70,
+   "server": 70
+  },
+  {
+   "name": "Manufacturer",
+   "offline": 3,
+   "server": 3
+  },
+  {
+   "name": "Marker",
+   "offline": 44,
+   "server": 44
+  },
+  {
+   "name": "Model",
+   "offline": 2,
+   "server": 2
+  },
+  {
+   "name": "NoMagnet",
+   "offline": 49,
+   "server": 49
+  },
+  {
+   "name": "ProductType",
+   "offline": 56,
+   "server": 56
+  },
+  {
+   "name": "ProfileType",
+   "offline": 55,
+   "server": 55
+  },
+  {
+   "name": "Refrigerator_Type",
+   "offline": 6,
+   "server": 6
+  },
+  {
+   "name": "widthEntry",
+   "offline": 67,
+   "server": 67
+  },
+  {
+   "name": "xModel",
+   "offline": 72,
+   "server": 72
+  },
+  {
+   "name": "zzCreatedAcct",
+   "offline": 27,
+   "server": 27
+  },
+  {
+   "name": "zzCreatedName",
+   "offline": 28,
+   "server": 28
+  },
+  {
+   "name": "zzModifiedAcct",
+   "offline": 31,
+   "server": 31
+  },
+  {
+   "name": "zzModifiedName",
+   "offline": 32,
+   "server": 32
+  },
+  {
+   "name": "__kp_CustomerEquipment",
+   "offline": 1,
+   "server": 1
+  },
+  {
+   "name": "_kf_Equipment",
+   "offline": 9,
+   "server": 9
+  },
+  {
+   "name": "_kf_Location",
+   "offline": 17,
+   "server": 17
+  },
+  {
+   "name": "Custom_Price",
+   "offline": 18,
+   "server": 18
+  },
+  {
+   "name": "f_backerRodNeeded",
+   "offline": 69,
+   "server": 69
+  },
+  {
+   "name": "f_fillerNeeded",
+   "offline": 63,
+   "server": 63
+  },
+  {
+   "name": "f_substitutePart",
+   "offline": 58,
+   "server": 58
+  },
+  {
+   "name": "gasketLinear_Ft",
+   "offline": 60,
+   "server": 60
+  },
+  {
+   "name": "gasketLinear_In",
+   "offline": 59,
+   "server": 59
+  },
+  {
+   "name": "gasketLinearSub_Ft",
+   "offline": 61,
+   "server": 61
+  },
+  {
+   "name": "Height",
+   "offline": 7,
+   "server": 7
+  },
+  {
+   "name": "Label_Number",
+   "offline": 5,
+   "server": 5
+  },
+  {
+   "name": "Magnet_Profile",
+   "offline": 15,
+   "server": 15
+  },
+  {
+   "name": "OrderQty",
+   "offline": 25,
+   "server": 25
+  },
+  {
+   "name": "Qty",
+   "offline": 22,
+   "server": 22
+  },
+  {
+   "name": "Width",
+   "offline": 16,
+   "server": 16
+  },
+  {
+   "name": "Date_Gasket_Installed",
+   "offline": 13,
+   "server": 13
+  },
+  {
+   "name": "Date_Gasket_Shipped",
+   "offline": 12,
+   "server": 12
+  },
+  {
+   "name": "zzCreatedTimestamp",
+   "offline": 29,
+   "server": 29
+  },
+  {
+   "name": "zzModifiedTimestamp",
+   "offline": 33,
+   "server": 33
+  },
+  {
+   "name": "__ID",
+   "offline": 75,
+   "server": 74
+  }
+ ]
+}

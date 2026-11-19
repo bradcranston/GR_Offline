@@ -1,0 +1,64 @@
+// Locations::asJSON
+//
+// Changes from the current version:
+//   1. The four date fields go through ChangeDate_FM_to_JSON. Handing a
+//      date field to JSONString yields the literal "?", which is why the
+//      detail view currently reads "Last Order: ?" and "Next Visit: ?".
+//   2. "_ID_Customer" was assigned twice — once from Locations::_ID_Customer
+//      and again from Locations::Customer_Name, so the customer name
+//      silently overwrote the id. Customer_Name now has its own key.
+//   3. Region and f_unpaidInv added: both are already in the list payload
+//      and are what a tech would sort a route by.
+
+JSONSetElement ( ""
+
+;[ "_ID" ; __ID ; JSONString]
+;[ "CONj__ContactsJoin" ; "[" & Substitute ( List ( Locations.ContactsJoin::asJSON ) ; ¶ ; "," ) & "]" ; JSONArray]
+;[ "CUSTOMER_EQUIPMENT" ; "[" & Substitute ( List ( Locations.Equipment::asJSON ) ; ¶ ; "," ) & "]" ; JSONArray]
+
+;["Location_Name";Locations::Location_Name;JSONString]
+;["__kp_Location";Locations::__kp_Location;JSONString]
+;["__ID";Locations::__ID;JSONString]
+;["_kf_Customer";Locations::_kf_Customer;JSONString]
+;["_ID_Customer";Locations::_ID_Customer;JSONString]
+;["Customer_Name";Locations::Customer_Name;JSONString]
+
+;["LastOrder";
+    If ( IsEmpty ( Locations::LastOrder ) ; "" ;
+        ChangeDate_FM_to_JSON ( Locations::LastOrder ) ) ; JSONString]
+;["Pricing_Level";Locations::Pricing_Level;JSONString]
+;["TaxExempt";Locations::TaxExempt;JSONString]
+;["VisitLast";
+    If ( IsEmpty ( Locations::VisitLast ) ; "" ;
+        ChangeDate_FM_to_JSON ( Locations::VisitLast ) ) ; JSONString]
+;["VisitNext";Locations::VisitNext;JSONString]
+;["VisitNextDate";
+    If ( IsEmpty ( Locations::VisitNextDate ) ; "" ;
+        ChangeDate_FM_to_JSON ( Locations::VisitNextDate ) ) ; JSONString]
+
+;["Region";Locations::Region;JSONString]
+;["f_unpaidInv";Locations::f_unpaidInv;JSONString]
+
+;["BillAddress1";Locations::BillAddress1;JSONString]
+;["BillAddress2";Locations::BillAddress2;JSONString]
+;["BillCity";Locations::BillCity;JSONString]
+;["BillLocationName";Locations::BillLocationName;JSONString]
+;["BillState";Locations::BillState;JSONString]
+;["BillZip";Locations::BillZip;JSONString]
+;["BillZip_plusFour";Locations::BillZip_plusFour;JSONString]
+
+;["ShipAddress1";Locations::ShipAddress1;JSONString]
+;["ShipAddress2";Locations::ShipAddress2;JSONString]
+;["ShipCity";Locations::ShipCity;JSONString]
+;["ShipLocationName";Locations::ShipLocationName;JSONString]
+;["ShipState";Locations::ShipState;JSONString]
+;["ShipZip";Locations::ShipZip;JSONString]
+;["ShipZip_plusFour";Locations::ShipZip_plusFour;JSONString]
+
+;["PhysicalAddress1";Locations::PhysicalAddress1;JSONString]
+;["PhysicalAddress2";Locations::PhysicalAddress2;JSONString]
+;["PhysicalCity";Locations::PhysicalCity;JSONString]
+;["PhysicalState";Locations::PhysicalState;JSONString]
+;["PhysicalZip";Locations::PhysicalZip;JSONString]
+;["PhysicalZip_plusFour";Locations::PhysicalZip_plusFour;JSONString]
+)

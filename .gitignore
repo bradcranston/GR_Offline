@@ -3,4 +3,11 @@ node_modules
 dist
 import.log
 .parcel-cache
-.DS_Store'
+.DS_Store
+# FileMaker DDR exports — contain every API credential in the file in plaintext
+*_fmp12.xml
+Summary.xml
+*.fmp12
+Recover.log
+.env
+.env.*

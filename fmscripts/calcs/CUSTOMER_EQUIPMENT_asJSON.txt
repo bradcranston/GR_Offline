@@ -1,0 +1,47 @@
+// CUSTOMER_EQUIPMENT::asJSON
+//
+// Changes from the current version:
+//   1. __ID is included. Without it the web viewer receives equipment rows
+//      with no identity, so SaveEquipmentList has nothing to match on and
+//      every save creates duplicates instead of updating.
+//   2. Date_Gasket_Installed goes through ChangeDate_FM_to_JSON. A date
+//      field handed to JSONString yields the literal "?", which reached the
+//      widget as data and pre-filled the form input with a question mark.
+//   3. f_pendingSync and z_syncAction are exposed so the widget can show
+//      which rows are still waiting to upload.
+//   4. Refrigerator_Type was listed twice; the duplicate is dropped.
+
+JSONSetElement ( ""
+
+;["__ID";CUSTOMER_EQUIPMENT::__ID;JSONString]
+
+;["Qty";CUSTOMER_EQUIPMENT::Qty;JSONString]
+;["Label_Number";CUSTOMER_EQUIPMENT::Label_Number;JSONString]
+;["Equipment_Location_Description";CUSTOMER_EQUIPMENT::Equipment_Location_Description;JSONString]
+;["Refrigerator_Type";CUSTOMER_EQUIPMENT::Refrigerator_Type;JSONString]
+;["Manufacturer";CUSTOMER_EQUIPMENT::Manufacturer;JSONString]
+;["Gasket_Profile";CUSTOMER_EQUIPMENT::Gasket_Profile;JSONString]
+;["Width";CUSTOMER_EQUIPMENT::Width;JSONString]
+;["Height";CUSTOMER_EQUIPMENT::Height;JSONString]
+;["Custom_Price";CUSTOMER_EQUIPMENT::Custom_Price;JSONString]
+;["ProductType";CUSTOMER_EQUIPMENT::ProductType;JSONString]
+;["Item_Note";CUSTOMER_EQUIPMENT::Item_Note;JSONString]
+;["gasketLinearSub_Ft";CUSTOMER_EQUIPMENT::gasketLinearSub_Ft;JSONString]
+
+;["Date_Gasket_Installed";
+    If ( IsEmpty ( CUSTOMER_EQUIPMENT::Date_Gasket_Installed ) ; "" ;
+        ChangeDate_FM_to_JSON ( CUSTOMER_EQUIPMENT::Date_Gasket_Installed ) ) ;
+    JSONString]
+
+;["f_substitutePart";CUSTOMER_EQUIPMENT::f_substitutePart;JSONString]
+;["NoMagnet";CUSTOMER_EQUIPMENT::NoMagnet;JSONString]
+;["InvertedProfile";CUSTOMER_EQUIPMENT::InvertedProfile;JSONString]
+;["Door";CUSTOMER_EQUIPMENT::Door;JSONString]
+;["DoorOption";CUSTOMER_EQUIPMENT::DoorOption;JSONString]
+;["f_fillerNeeded";CUSTOMER_EQUIPMENT::f_fillerNeeded;JSONString]
+;["f_backerRodNeeded";CUSTOMER_EQUIPMENT::f_backerRodNeeded;JSONString]
+
+;["f_pendingSync";CUSTOMER_EQUIPMENT::f_pendingSync;JSONString]
+;["z_syncAction";CUSTOMER_EQUIPMENT::z_syncAction;JSONString]
+
+)

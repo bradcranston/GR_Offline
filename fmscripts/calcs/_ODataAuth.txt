@@ -1,0 +1,29 @@
+//  _ODataAuth ( )  -- custom function, no parameters. Paste into
+//  File > Manage > Custom Functions, replacing the existing body.
+//
+//  Basic auth for the hosted file's OData API.
+//  Used by Initial Download, UploadChanges and the route import.
+//
+//  The secret is RECORD DATA in the Credential table, not schema. A DDR
+//  export captures calculations, auto-enter constants, value lists and
+//  script text, but not record contents -- so nothing secret leaves the
+//  building when someone exports a DDR.
+//
+//  Load the row into the master copy before distributing the file:
+//      Name  = "odata"
+//      Value = Base64EncodeRFC ( 4648 ; "account:password" )
+//
+//  This keeps it out of DDRs. It does not hide it from anyone holding the
+//  file -- that is what the scoped OData account is for.
+//
+//  ExecuteSQL obeys the signed-in account's privileges. An account that
+//  cannot view Credential ([Guest] on "Guest Access") gets "?" back, not an
+//  empty result -- and "?" passed the callers' IsEmpty guard and went out as
+//  "Authorization: Basic ?" (401, -1006 "Unsupported Authorization header
+//  format", probe 2026-10-15). Return empty instead, so every caller reports
+//  "no server credentials". Base64 never contains "?", so nothing real is lost.
+
+Let (
+  v = ExecuteSQL ( "select \"Value\" from \"Credential\" where \"Name\" = ?" ; "" ; "" ; "odata" ) ;
+  If ( v = "?" ; "" ; v )
+)

@@ -1,0 +1,987 @@
+[
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "1",
+		"name" : "Bevles"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "1",
+		"name" : "CresCor"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "1",
+		"name" : "Henny Penny"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "1",
+		"name" : "Alto-Shaam"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "1",
+		"name" : "Metro"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "AcmeAdvanco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "American Cooler"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "American Panel"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Anthony"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Arctic Air"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Ardco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Bally"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Barr Display Doors"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Beverage Air"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Brown"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Continental"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "1",
+		"name" : "Custom"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "CrownTonka"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Dalton"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Delfield"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Duke"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Electrolux"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Eliason Swing Door"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Flav-R-Savor"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Florida Stainless"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Formakool"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Foster"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "FME"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Glastender"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Glenco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Gordon"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Harford"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hatco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hobart / Koch"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hobart/ Traulsen"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Howard / McCray"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hoshizaki"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hospitality"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Hussmann"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "International Cold Storage (ICS)"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Jordan"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kairak"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kason"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kelvinator"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kolpak"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Leader"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Leer"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Louisville"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Manitowoc"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Maxx Cold"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "McCall"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "McCray"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Migaii"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Norpole"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Northiand"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Penn"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Perlick"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Randell"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Rhodes"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Schmidt"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Silver King"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Star Metal"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Stanley Knight"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Styleline"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Tafco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "ThermalRite"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Thermo-Kool"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Traulsen"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "True"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Turbo Air"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Tyler"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "US Cooler"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Victory"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Wasserstrom"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Pacific"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Everest"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Duracold"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Superior/True"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Utility"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Frigidaire"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Revent"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "National Cooler"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Special Order"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Micro Matic"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Welbilt"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Imperial"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Chase Doors"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Zero Zone"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Ascend/ColdTech"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Cleveland/Manitowoc"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kysor"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Volrath"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Scotsman"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Kalt"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Summit"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Carrier"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Electro Freeze"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Southern Stainless"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Craig"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Frank"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Wittco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Stoelting"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "KPS"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Irinox"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Atosa"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "R-Plus"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "La Rosa"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Roast & Hold"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Greer"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Avantco"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Southeast Cooler"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Accu-Temp"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "AdCraft"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Amerikooler"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Asber/Fagor Commercial"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Atlas"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Bakers Pride"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Bastian Blessing"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Baxter"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Blodgett"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Cadco"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Carter-Hoffmann"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Chase Senneca"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "ClearVu"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "ColdTech"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Component Hardware Group (CHG)"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Cookshack"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Culitek"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Dent"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Doyon"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Eliason-Chase-Seneca"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Fagor"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "FlexCool/Himi"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Fogel"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Follett"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Food Warming Equipment (FWE)"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Generic"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Groen"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "H&K International"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Herrick"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Hobart"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Howard"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Inter Metro"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "KPS Global"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "LBC"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Lockwood"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Market Forge"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Master-Bilt"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "MerryChef"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Middleby Marshall"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Moffat"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "National Guard"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Norlake"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Nu-Vu"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "OEM"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Ole Hickory"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Piper"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Pittco"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Premco"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Rational"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "RHS"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Schaefer"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Southbend"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Southern Pride"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Store Pickup"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Summit/Felix Storch Inc"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Turbo Chef"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "UnoX"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Vulcan-Hart"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Waring"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Winholt"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Winston"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Zoro"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Pemco"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Uxcell"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "1",
+		"name" : "Royalton"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Dictator"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Metal Supermarket"
+	},
+	{
+		"f_makesCoolers" : "1",
+		"f_makesWarmers" : "0",
+		"name" : "Entree"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Advanced Insulation Concepts"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Aleco"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Commercial Display Systems"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Edey Manufacturing"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Cool Curtain Industries"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "World Manufacturing"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Imperial Brown"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Quest Elite"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Taxican"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Sub Zero"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Custom"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Belshaw"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Mono"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Bunn"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Cambro"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Wells"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "ProBrake"
+	},
+	{
+		"f_makesCoolers" : "0",
+		"f_makesWarmers" : "0",
+		"name" : "Structural Concepts"
+	}
+]

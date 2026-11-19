@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CustomersEquipment?$filter=__ID eq '" & CUSTOMER_EQUIPMENT::__ID & "'&$select=__kp_CustomerEquipment,zzModifiedTimestamp"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["--X GET
+--H \"Accept: application/json\"
+--H \"OData-Version: 4.0\"
+--H \"Authorization: Basic " & _ODataAuth ( ) & "\"
+--location
+--dump-header $headerResponse
+"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$curl</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$headerResponse</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$response</Field></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Get ( LastError )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$netError</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Let ( p = Position ( $headerResponse ; "HTTP/" ; Length ( $headerResponse ) ; -1 ) ; GetAsNumber ( Middle ( $headerResponse ; Position ( $headerResponse ; " " ; p ; 1 ) + 1 ; 3 ) ) )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$status</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$netError ≠ 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Lookup failed: could not reach the server (error " & $netError & ")."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$status < 200 or $status > 299]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Lookup failed: server said " & $status & Case ( not IsEmpty ( JSONGetElement ( $response ; "error.message" ) ) and JSONGetElement ( $response ; "error.message" ) ≠ "?" ; " -- " & JSONGetElement ( $response ; "error.message" ) ; "" ) & "."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement ( $response ; "value[0]__kp_CustomerEquipment" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$serverKey</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSON.Types.GetTimestampFromISO ( $response ; "value[0]zzModifiedTimestamp" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$serverModified</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $serverKey ) or $serverKey = "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$serverKey</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$action = "delete"]]></Calculation></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Already gone on the server. The local tombstone can go too.</Text></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["This record no longer exists on the server."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------EQUIPMENT: CONFLICT CHECK---------- #</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>z_serverModTimestamp is the server's timestamp as of download. If it has</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>moved, the office edited this row too. Leave both versions alone and say so.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action = "update" and not IsEmpty ( $serverModified ) and $serverModified ≠ "?" and not IsEmpty ( CUSTOMER_EQUIPMENT::z_serverModTimestamp ) and $serverModified ≠ CUSTOMER_EQUIPMENT::z_serverModTimestamp]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[True]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$isConflict</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Changed in the office since this device downloaded it. Not uploaded."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $conflicts ; "[" & ValueCount ( JSONListKeys ( $conflicts ; "" ) ) & "]" ; JSONSetElement ( "{}" ; [ "table" ; "EQUIPMENT" ; JSONString ] ; [ "__ID" ; CUSTOMER_EQUIPMENT::__ID ; JSONString ] ) ; JSONObject )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$conflicts</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------EQUIPMENT: BUILD THE BODY---------- #</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action ≠ "delete"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "__ID" ; CUSTOMER_EQUIPMENT::__ID ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$action = "create"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "_kf_Location" ; CUSTOMER_EQUIPMENT::_kf_Location ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Text is sent even when empty, so clearing a note propagates.</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "ProductType" ; CUSTOMER_EQUIPMENT::ProductType ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Manufacturer" ; CUSTOMER_EQUIPMENT::Manufacturer ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Refrigerator_Type" ; CUSTOMER_EQUIPMENT::Refrigerator_Type ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Equipment_Location_Description" ; CUSTOMER_EQUIPMENT::Equipment_Location_Description ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Gasket_Profile" ; CUSTOMER_EQUIPMENT::Gasket_Profile ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Door" ; CUSTOMER_EQUIPMENT::Door ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "DoorOption" ; CUSTOMER_EQUIPMENT::DoorOption ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "InvertedProfile" ; CUSTOMER_EQUIPMENT::InvertedProfile ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "NoMagnet" ; CUSTOMER_EQUIPMENT::NoMagnet ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Item_Note" ; CUSTOMER_EQUIPMENT::Item_Note ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Empty numbers are omitted: 0 would be a wrong measurement, not a blank one.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Label_Number )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Label_Number" ; CUSTOMER_EQUIPMENT::Label_Number ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Height )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Height" ; CUSTOMER_EQUIPMENT::Height ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Width )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Width" ; CUSTOMER_EQUIPMENT::Width ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Qty )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Qty" ; CUSTOMER_EQUIPMENT::Qty ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::gasketLinearSub_Ft )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "gasketLinearSub_Ft" ; CUSTOMER_EQUIPMENT::gasketLinearSub_Ft ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Custom_Price )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Custom_Price" ; CUSTOMER_EQUIPMENT::Custom_Price ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::f_backerRodNeeded )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "f_backerRodNeeded" ; CUSTOMER_EQUIPMENT::f_backerRodNeeded ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::f_fillerNeeded )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "f_fillerNeeded" ; CUSTOMER_EQUIPMENT::f_fillerNeeded ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::f_substitutePart )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "f_substitutePart" ; CUSTOMER_EQUIPMENT::f_substitutePart ; JSONNumber ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( CUSTOMER_EQUIPMENT::Date_Gasket_Installed )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONSetElement ( $body ; [ "Date_Gasket_Installed" ; ChangeDate_FM_to_JSON ( CUSTOMER_EQUIPMENT::Date_Gasket_Installed ) ; JSONString ] )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$body</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------EQUIPMENT: SEND---------- #</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action = "create"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CustomersEquipment"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["--X POST
+--H \"Accept: application/json\"
+--H \"OData-Version: 4.0\"
+--H \"Content-Type: application/json\"
+--H \"Authorization: Basic " & _ODataAuth ( ) & "\"
+--data @$body
+--location
+--dump-header $headerResponse
+"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$curl</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$headerResponse</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$response</Field></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Get ( LastError )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$netError</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Let ( p = Position ( $headerResponse ; "HTTP/" ; Length ( $headerResponse ) ; -1 ) ; GetAsNumber ( Middle ( $headerResponse ; Position ( $headerResponse ; " " ; p ; 1 ) + 1 ; 3 ) ) )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$status</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$netError ≠ 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Create failed: could not reach the server (error " & $netError & ")."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$status < 200 or $status > 299]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Create failed: server said " & $status & Case ( not IsEmpty ( JSONGetElement ( $response ; "error.message" ) ) and JSONGetElement ( $response ; "error.message" ) ≠ "?" ; " -- " & JSONGetElement ( $response ; "error.message" ) ; "" ) & "."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action = "update"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CustomersEquipment(" & $serverKey & ")"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["--X PATCH
+--H \"Accept: application/json\"
+--H \"OData-Version: 4.0\"
+--H \"Content-Type: application/json\"
+--H \"Authorization: Basic " & _ODataAuth ( ) & "\"
+--data @$body
+--location
+--dump-header $headerResponse
+"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$curl</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$headerResponse</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$response</Field></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Get ( LastError )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$netError</Name></Step>
+</fmxmlsnippet>

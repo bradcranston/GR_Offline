@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+  <Field id="1" dataType="Text" fieldType="Normal" name="CustomersJSON">
+    <Comment>The tech's assigned customers as JSON [{__kp_Customer, Customer_Name}], stashed by Initial Download. Feeds the customer picker when a location is created in the field; the offline file has no Customers table.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="None" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+</fmxmlsnippet>

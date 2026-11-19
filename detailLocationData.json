@@ -1,0 +1,273 @@
+{
+	"BillAddress1" : "6731 Miller Ln",
+	"BillAddress2" : "",
+	"BillCity" : "Dayton",
+	"BillLocationName" : "Smashburger - York Commons #1807",
+	"BillState" : "OH",
+	"BillZip" : "45414",
+	"BillZip_plusFour" : "",
+	"CONj__ContactsJoin" : 
+	[
+		{
+			"Contacts" : 
+			[
+				{
+					"ContactMethod" : 
+					[
+						{
+							"Data" : "1807@smashburger.com",
+							"Label" : "Select...",
+							"Type" : "E-mail",
+							"_ID" : "GG7VRTISFROWBW58Q6K2D",
+							"f_phone" : "0"
+						}
+					],
+					"FirstName" : "Tenisha",
+					"FullName" : "Tenisha",
+					"LastName" : "",
+					"_ID" : "GG7VRTISFRMRJSXDJETPI"
+				}
+			],
+			"_ID" : "GG7VRTISFSTPK71X51TK6"
+		},
+		{
+			"Contacts" : 
+			[
+				{
+					"ContactMethod" : 
+					[
+						{
+							"Data" : "Gabby.pinto@smashburger.com",
+							"Label" : "Select...",
+							"Type" : "E-mail",
+							"_ID" : "GG7VRTISFROWBXF6JLLX7",
+							"f_phone" : "0"
+						}
+					],
+					"FirstName" : "Gabby",
+					"FullName" : "Gabby",
+					"LastName" : "",
+					"_ID" : "GG7VRTISFRMRJU7BCTVKT"
+				}
+			],
+			"_ID" : "GG7VRTISFSTPKFZHUZ6E6"
+		},
+		{
+			"Contacts" : 
+			[
+				{
+					"ContactMethod" : [],
+					"FirstName" : "Upload Invoice to",
+					"FullName" : "Upload Invoice to Service Channel",
+					"LastName" : "Service Channel",
+					"_ID" : "Z8UADJBS9SJP1EYB3IBC7E"
+				}
+			],
+			"_ID" : "2ZVYNKHFHO1O168NYQ6C9NJQZ"
+		},
+		{
+			"Contacts" : 
+			[
+				{
+					"ContactMethod" : 
+					[
+						{
+							"Data" : "steve.cordero@smashburger.com",
+							"Label" : "Email",
+							"Type" : "E-mail",
+							"_ID" : "VK5RWJ2HGKM5ERMAPBVTBY",
+							"f_phone" : "0"
+						}
+					],
+					"FirstName" : "Steve",
+					"FullName" : "Steve Cordero",
+					"LastName" : "Cordero",
+					"_ID" : "VK5RWJ2HGKM39G186P6624"
+				}
+			],
+			"_ID" : "2YG2G0YVIE60V202NTQCW4WJO"
+		}
+	],
+	"CUSTOMER_EQUIPMENT" : 
+	[
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "3 Sided Door",
+			"DoorOption" : "LH\rRH\rTop",
+			"Equipment_Location_Description" : "Walk in frame ",
+			"Gasket_Profile" : "1445 GY",
+			"Height" : "79",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "1",
+			"Manufacturer" : "Kolpak",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Walk In",
+			"Width" : "32.125",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "16"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "",
+			"Door" : "3 Sided Door",
+			"DoorOption" : "LH\rRH\rTop",
+			"Equipment_Location_Description" : "Walk in",
+			"Gasket_Profile" : "019",
+			"Height" : "79",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "2",
+			"Manufacturer" : "Kolpak",
+			"NoMagnet" : "RH",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Walk In",
+			"Width" : "32.25",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "16"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "4 Sided Door",
+			"DoorOption" : "",
+			"Equipment_Location_Description" : "4 drawer under flattop ",
+			"Gasket_Profile" : "2563S",
+			"Height" : "8.25",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "3",
+			"Manufacturer" : "Avantco",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Drawer",
+			"Width" : "29.75",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "6.5"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "4 Sided Door",
+			"DoorOption" : "",
+			"Equipment_Location_Description" : "2 door tri ",
+			"Gasket_Profile" : "516S BK",
+			"Height" : "28.625",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "4",
+			"Manufacturer" : "Custom",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Half Door",
+			"Width" : "24.625",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "9"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "4 Sided Door",
+			"DoorOption" : "",
+			"Equipment_Location_Description" : "2 door Lri ",
+			"Gasket_Profile" : "2563S",
+			"Height" : "26.5",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "5",
+			"Manufacturer" : "Custom",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Half Door",
+			"Width" : "29",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "9.25"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "3 Sided Door",
+			"DoorOption" : "LH\rRH\rTop",
+			"Equipment_Location_Description" : "Walk in freezer ",
+			"Gasket_Profile" : "019",
+			"Height" : "79",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "6",
+			"Manufacturer" : "Kolpak",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Walk In",
+			"Width" : "32.25",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "16"
+		},
+		{
+			"Custom_Price" : "",
+			"Date_Gasket_Installed" : "?",
+			"Door" : "4 Sided Door",
+			"DoorOption" : "",
+			"Equipment_Location_Description" : "Single LRI front ",
+			"Gasket_Profile" : "2596S",
+			"Height" : "25.375",
+			"InvertedProfile" : "",
+			"Item_Note" : "",
+			"Label_Number" : "7",
+			"Manufacturer" : "Custom",
+			"NoMagnet" : "",
+			"ProductType" : "Refrigerator",
+			"Qty" : "1",
+			"Refrigerator_Type" : "Half Door",
+			"Width" : "25.125",
+			"f_backerRodNeeded" : "0",
+			"f_fillerNeeded" : "0",
+			"f_substitutePart" : "0",
+			"gasketLinearSub_Ft" : "8.5"
+		}
+	],
+	"LastOrder" : "?",
+	"Location_Name" : "Smashburger - York Commons #1807",
+	"PhysicalAddress1" : "6731 Miller Ln",
+	"PhysicalAddress2" : "",
+	"PhysicalCity" : "Dayton",
+	"PhysicalState" : "OH",
+	"PhysicalZip" : "45414",
+	"PhysicalZip_plusFour" : "",
+	"Pricing_Level" : "",
+	"ShipAddress1" : "1207 Maple Run Dr",
+	"ShipAddress2" : "",
+	"ShipCity" : "Sheridan",
+	"ShipLocationName" : "Gaskets Rock - Greater Indianapolis & Louisville",
+	"ShipState" : "IN",
+	"ShipZip" : "46069",
+	"ShipZip_plusFour" : "",
+	"TaxExempt" : "",
+	"VisitLast" : "?",
+	"VisitNext" : "6",
+	"VisitNextDate" : "?",
+	"_ID" : "GG7VRTISFRG2KS0I6PKSW",
+	"_ID_Customer" : "",
+	"__ID" : "GG7VRTISFRG2KS0I6PKSW",
+	"__kp_Location" : "40531",
+	"_kf_Customer" : "2889"
+}

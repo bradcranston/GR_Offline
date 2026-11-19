@@ -2,16 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
     <style>
       @import "./src/style.css";
     </style>
-    <title>JSDev</title>
+    <title>Gaskets Rock - Field App</title>
   </head>
   <body>
-    <h1>Alright. You're set.</h1>
-      <h2 class="tintedBlackLeft">Now build something amazing!</h2>
-      <p>JS in FM is amazing</p>
-    <button type="button">Click Me!</button>
+    <div id="app">
+      <p class="loading-state">Loading locations&hellip;</p>
+    </div>
 
     <script type="module">
       import "./src/index.js";

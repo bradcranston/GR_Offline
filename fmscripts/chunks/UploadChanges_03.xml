@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------LOCATIONS: RECORD THE OUTCOME---------- #</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not $skip]]></Calculation></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err )]]></Calculation></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$action = "create"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement ( $response ; "__kp_Location" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$newKey</Name></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( $newKey ) and $newKey ≠ "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Locations::__kp_Location]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$oldKey</Name></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[$newKey]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::__kp_Location"]]></Calculation></TargetName></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( JSONGetElement ( $response ; "zzModifiedTimestamp" ) ) and JSONGetElement ( $response ; "zzModifiedTimestamp" ) ≠ "?"]]></Calculation></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[JSON.Types.GetTimestampFromISO ( $response ; "zzModifiedTimestamp" )]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::z_serverModTimestamp"]]></Calculation></TargetName></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[0]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::f_pendingSync"]]></Calculation></TargetName></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[""]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::z_syncAction"]]></Calculation></TargetName></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[""]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::z_syncError"]]></Calculation></TargetName></Step>
+<Step enable="True" id="75" name="Commit Records/Requests"><NoInteract state="True"/><Option state="False"/><ESSForceCommit state="False"/><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>A location created in the field had a negative local key. Its equipment</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>still points at that key -- repoint it at the real one now, before the</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>equipment pass sends any of it.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[$action = "create" and not IsEmpty ( $newKey ) and $newKey ≠ "?" and GetAsNumber ( $oldKey ) < 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[ExecuteSQL ( "select \"__ID\" from \"CUSTOMER_EQUIPMENT\" where \"_kf_Location\" = ?" ; "" ; "" ; $oldKey )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$kids</Name></Step>
+<Step enable="True" id="6" name="Go to Layout"><DisableStepCollapsed state="False"/><LayoutDestination value="SelectedLayout"/><Layout id="7" name="EquipmentSync"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$k</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$k + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$k</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[GetValue ( $kids ; $k )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$kidID</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $kidID )]]></Calculation></Step>
+<Step enable="True" id="28" name="Perform Find"><DisableStepCollapsed state="False"/><Restore state="True"/><Query><RequestRow operation="Include"><Criteria><Field table="CUSTOMER_EQUIPMENT" id="75" name="__ID"/><Text>$kidID</Text></Criteria></RequestRow></Query></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) = 0]]></Calculation></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[$newKey]]></Calculation></Result><TargetName><Calculation><![CDATA["CUSTOMER_EQUIPMENT::_kf_Location"]]></Calculation></TargetName></Step>
+<Step enable="True" id="75" name="Commit Records/Requests"><NoInteract state="True"/><Option state="False"/><ESSForceCommit state="False"/><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$uploaded + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$uploaded</Name></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[$err]]></Calculation></Result><TargetName><Calculation><![CDATA["Locations::z_syncError"]]></Calculation></TargetName></Step>
+<Step enable="True" id="75" name="Commit Records/Requests"><NoInteract state="True"/><Option state="False"/><ESSForceCommit state="False"/><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not $isConflict]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$failed + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$failed</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------EQUIPMENT PASS---------- #</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[ExecuteSQL ( "select \"__ID\" from \"CUSTOMER_EQUIPMENT\" where \"f_pendingSync\" = 1" ; "" ; "" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$pending</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$i</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$i + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$i</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[GetValue ( $pending ; $i )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$rowID</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $rowID )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[False]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$skip</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[False]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$isConflict</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$serverKey</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$serverModified</Name></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Layout is set every iteration: a location create switches to</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>EquipmentSync to repoint children, and the next row must not inherit that.</Text></Step>
+<Step enable="True" id="6" name="Go to Layout"><DisableStepCollapsed state="False"/><LayoutDestination value="SelectedLayout"/><Layout id="7" name="EquipmentSync"/></Step>
+<Step enable="True" id="28" name="Perform Find"><DisableStepCollapsed state="False"/><Restore state="True"/><Query><RequestRow operation="Include"><Criteria><Field table="CUSTOMER_EQUIPMENT" id="75" name="__ID"/><Text>$rowID</Text></Criteria></RequestRow></Query></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) ≠ 0]]></Calculation></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Row vanished between the query and the find -- nothing to send.</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[True]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$skip</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[CUSTOMER_EQUIPMENT::z_syncAction]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$action</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Equipment under a location that hasn't reached the server yet still</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>points at a negative local key. Sending it would orphan it on the server.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action ≠ "delete" and GetAsNumber ( CUSTOMER_EQUIPMENT::_kf_Location ) < 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["Its location hasn't been uploaded yet -- it will go on the next upload."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$err</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------EQUIPMENT: FIND THE SERVER'S KEY---------- #</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>The device knows a row by __ID; OData addresses it by the server's</Text></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>numeric key. The same GET returns zzModifiedTimestamp for the conflict check.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $err ) and not $skip and $action ≠ "create"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CustomersEquipment?$filter=__ID eq '" & CUSTOMER_EQUIPMENT::__ID & "'&$select=__kp_CustomerEquipment,zzModifiedTimestamp"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["--X GET
+--H \"Accept: application/json\"
+--H \"OData-Version: 4.0\"
+--H \"Authorization: Basic " & _ODataAuth ( ) & "\"
+--location
+--dump-header $headerResponse
+"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$curl</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$headerResponse</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$response</Field></Step>
+</fmxmlsnippet>

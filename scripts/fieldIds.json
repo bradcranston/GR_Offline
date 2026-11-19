@@ -1,0 +1,33 @@
+{
+  "Locations": {
+    "__ID": 6,
+    "__kp_Location": 7,
+    "_kf_Customer": 15
+  },
+  "MFG_Manufacturers": {
+    "__ID": 30
+  },
+  "Profiles": {
+    "__kp_Gasket_Profile": 20
+  },
+  "CUSTOMER_EQUIPMENT": {
+    "__ID": 75,
+    "_kf_Location": 17,
+    "__kp_CustomerEquipment": 1
+  },
+  "CONj__ContactsJoin": {
+    "__ID": 9
+  },
+  "CON_Contacts": {
+    "__ID": 30
+  },
+  "ContactMethod": {
+    "__ID": 1
+  },
+  "Address": {
+    "_ID": 9
+  },
+  "Sync_Settings": {
+    "__ID": 9
+  }
+}

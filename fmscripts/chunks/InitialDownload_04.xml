@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$n + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$n</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[$n ≥ 50]]></Calculation></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $chunk )]]></Calculation></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CONj_ContactsJoin?$filter=" & "parentType eq 'Location'" & " and " & "(" & $chunk & ")&$select=" & $fields]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$result</Field></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) ≠ 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACT JOINS: network error " & Get ( LastError ) & " contacting the server. Check the connection and run the download again."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( JSONGetElement ( $result ; "error.message" ) )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACT JOINS: the server rejected the request -- " & JSONGetElement ( $result ; "error.message" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[JSONGetElement ( $result ; "value" ) = "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACT JOINS: unexpected response from the server. Nothing was imported."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Upsert CONj_ContactsJoin rows from $result</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$ii</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement_Valid ( $result ; "value[" & $ii & "]" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$rowJSON</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $rowJSON )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONlistKeys_Valid ( $result ; "value[" & $ii & "]" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$rowKeys</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement ( $rowJSON ; "__ID" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$pkValue</Name></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>A row with no key would find nothing and be created again on every run.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $pkValue ) or $pkValue = "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$skippedNoKey + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$skippedNoKey</Name></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Find the existing record for this key; create one if absent.</Text></Step>
+<Step enable="True" id="28" name="Perform Find"><DisableStepCollapsed state="False"/><Restore state="True"/><Query><RequestRow operation="Include"><Criteria><Field table="CONj__ContactsJoin" id="9" name="__ID"/><Text>$pkValue</Text></Criteria></RequestRow></Query></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) ≠ 0]]></Calculation></Step>
+<Step enable="True" id="7" name="New Record/Request"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$iii</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$iii + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$iii</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[GetValue ( $rowKeys ; $iii )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$fieldName</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $fieldName )]]></Calculation></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Left ( $fieldName ; 1 ) ≠ "@"]]></Calculation></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[JSONGetElement ( $rowJSON ; $fieldName )]]></Calculation></Result><TargetName><Calculation><![CDATA["CONj__ContactsJoin::" & $fieldName]]></Calculation></TargetName></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="75" name="Commit Records/Requests"><NoInteract state="True"/><Option state="False"/><ESSForceCommit state="False"/><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$imported + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$imported</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$ii + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$ii</Name></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[ExecuteSQL ( "select distinct \"_ID_Contact\" from \"CONj__ContactsJoin\"" ; "" ; "" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$contactsKeys</Name></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>----------PULL CONTACTS---------- #</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[Substitute ( Substitute ( FieldNames ( Get ( FileName ) ; "ContactsSync" ) & "¶" ; [ "f_pendingSync¶" ; "" ] ; [ "z_syncAction¶" ; "" ] ; [ "z_localModTimestamp¶" ; "" ] ; [ "z_serverModTimestamp¶" ; "" ] ; [ "z_lastDownload¶" ; "" ] ; [ "z_syncError¶" ; "" ] ) ; ¶ ; "," )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$fields</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$contactsKeys]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$keys</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$k</Name></Step>
+<Step enable="True" id="6" name="Go to Layout"><DisableStepCollapsed state="False"/><LayoutDestination value="SelectedLayout"/><Layout id="15" name="ContactsSync"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Chunk the parent keys 50 at a time into one "or" filter.</Text></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[""]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$chunk</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$n</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$k + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$k</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[GetValue ( $keys ; $k )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$key</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $key )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$chunk & If ( IsEmpty ( $chunk ) ; "" ; " or " ) & "__ID eq " & "'" & $key & "'"]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$chunk</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$n + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$n</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[$n ≥ 50]]></Calculation></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $chunk )]]></Calculation></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$base & "CON_Contacts?$filter=" & "" & "(" & $chunk & ")&$select=" & $fields]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$url</Name></Step>
+<Step enable="True" id="160" name="Insert from URL"><NoInteract state="True"/><DontEncodeURL state="False"/><SelectAll state="True"/><DisableStepCollapsed state="False"/><VerifySSLCertificates state="False"/><CURLOptions><Calculation><![CDATA[$curl]]></Calculation></CURLOptions><Calculation><![CDATA[$url]]></Calculation><Text/><Field>$result</Field></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) ≠ 0]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACTS: network error " & Get ( LastError ) & " contacting the server. Check the connection and run the download again."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[not IsEmpty ( JSONGetElement ( $result ; "error.message" ) )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACTS: the server rejected the request -- " & JSONGetElement ( $result ; "error.message" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[JSONGetElement ( $result ; "value" ) = "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA["CONTACTS: unexpected response from the server. Nothing was imported."]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$error</Name></Step>
+<Step enable="True" id="175" name="Perform JavaScript in Web Viewer"><ObjectName><Calculation><![CDATA[$webviewer]]></Calculation></ObjectName><FunctionName><Calculation><![CDATA[showAppError]]></Calculation></FunctionName><Parameters Count="1"><P><Calculation><![CDATA[$error]]></Calculation></P></Parameters></Step>
+<Step enable="True" id="103" name="Exit Script"><DisableStepCollapsed state="False"/><Calculation><![CDATA[JSONSetElement ( "{}" ; [ "error" ; $error ; JSONString ] )]]></Calculation></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Upsert CON_Contacts rows from $result</Text></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$ii</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement_Valid ( $result ; "value[" & $ii & "]" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$rowJSON</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $rowJSON )]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONlistKeys_Valid ( $result ; "value[" & $ii & "]" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$rowKeys</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[JSONGetElement ( $rowJSON ; "__ID" )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$pkValue</Name></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>A row with no key would find nothing and be created again on every run.</Text></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[IsEmpty ( $pkValue ) or $pkValue = "?"]]></Calculation></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$skippedNoKey + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$skippedNoKey</Name></Step>
+<Step enable="True" id="69" name="Else"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/><Text>Find the existing record for this key; create one if absent.</Text></Step>
+<Step enable="True" id="28" name="Perform Find"><DisableStepCollapsed state="False"/><Restore state="True"/><Query><RequestRow operation="Include"><Criteria><Field table="CON_Contacts" id="30" name="__ID"/><Text>$pkValue</Text></Criteria></RequestRow></Query></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Get ( LastError ) ≠ 0]]></Calculation></Step>
+<Step enable="True" id="7" name="New Record/Request"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="89" name="# (comment)"><DisableStepCollapsed state="False"/><Restore state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[0]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$iii</Name></Step>
+<Step enable="True" id="71" name="Loop"><DisableStepCollapsed state="False"/><Restore state="False"/><FlushType value="Always"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$iii + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$iii</Name></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[GetValue ( $rowKeys ; $iii )]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$fieldName</Name></Step>
+<Step enable="True" id="72" name="Exit Loop If"><DisableStepCollapsed state="False"/><Calculation><![CDATA[IsEmpty ( $fieldName )]]></Calculation></Step>
+<Step enable="True" id="68" name="If"><DisableStepCollapsed state="False"/><Restore state="False"/><Calculation><![CDATA[Left ( $fieldName ; 1 ) ≠ "@"]]></Calculation></Step>
+<Step enable="True" id="147" name="Set Field By Name"><DisableStepCollapsed state="False"/><Result><Calculation><![CDATA[JSONGetElement ( $rowJSON ; $fieldName )]]></Calculation></Result><TargetName><Calculation><![CDATA["CON_Contacts::" & $fieldName]]></Calculation></TargetName></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="73" name="End Loop"><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="75" name="Commit Records/Requests"><NoInteract state="True"/><Option state="False"/><ESSForceCommit state="False"/><DisableStepCollapsed state="False"/></Step>
+<Step enable="True" id="141" name="Set Variable"><DisableStepCollapsed state="False"/><Value><Calculation><![CDATA[$imported + 1]]></Calculation></Value><Repetition><Calculation><![CDATA[1]]></Calculation></Repetition><Name>$imported</Name></Step>
+<Step enable="True" id="70" name="End If"><DisableStepCollapsed state="False"/></Step>
+</fmxmlsnippet>

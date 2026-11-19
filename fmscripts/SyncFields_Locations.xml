@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmxmlsnippet type="FMObjectList">
+  <Field id="1" dataType="Number" fieldType="Normal" name="f_pendingSync">
+    <Comment>1 while this row has local changes the server has not yet accepted.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="All" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+  <Field id="2" dataType="Text" fieldType="Normal" name="z_syncAction">
+    <Comment>create / update / delete -- what UploadChanges should do with this row.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="All" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+  <Field id="3" dataType="TimeStamp" fieldType="Normal" name="z_localModTimestamp">
+    <Comment>When the tech last changed this row on this device.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="None" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+  <Field id="4" dataType="TimeStamp" fieldType="Normal" name="z_serverModTimestamp">
+    <Comment>zzModifiedTimestamp as it was at download. Compared against the server's current value to detect a conflicting office edit.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="None" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+  <Field id="5" dataType="TimeStamp" fieldType="Normal" name="z_lastDownload">
+    <Comment>Stamped by Initial Download on every row it received. Rows left with an older stamp were deleted on the server, and are purged locally.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="All" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+  <Field id="6" dataType="Text" fieldType="Normal" name="z_syncError">
+    <Comment>Why the last upload attempt was rejected. Empty when clean.</Comment>
+    <AutoEnter allowEditing="True" overwriteExistingValue="True" alwaysEvaluate="False" constant="False" furigana="False" lookup="False" calculation="False">
+      <ConstantData/>
+    </AutoEnter>
+    <Validation messageCalc="False" message="False" maxLength="False" valuelist="False" calculation="False" alwaysValidateCalculation="False" type="OnlyDuringDataEntry">
+      <NotEmpty value="False"/>
+      <Unique value="False"/>
+      <Existing value="False"/>
+      <StrictValidation value="False"/>
+    </Validation>
+    <Storage index="None" indexLanguage="English" global="False" maxRepetition="1"/>
+    <Annotation>
+      <Text/>
+    </Annotation>
+    <DisplayNames enable="False"/>
+  </Field>
+</fmxmlsnippet>
